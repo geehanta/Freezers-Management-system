@@ -55,7 +55,7 @@ session_start();
                 <i class="fa-solid fa-bars" id="sidebar_btn"></i>
                 </label>
                 <div class="left_area">
-                <h2>FREEZER <span> MANAGEMENT</span>  </h2>
+                <h2>FREEZER  <span> MANAGEMENT</span>  </h2>
                 </div>
                 <div class="class">
                     <a href="logout.php" class="logout_btn">Logout</a>
@@ -71,12 +71,10 @@ session_start();
                         </h4>
                     <br>
                 </center>
-                
                 <a data-bs-toggle="tooltip" data-bs-placement="right"  
                 title="Dashboard" href="frzrsdashboard.php"><i class="fa-solid fa-tachometer"></i></i> <span>Dashboard</span></a>
                 <a data-bs-toggle="tooltip" data-bs-placement="right" class="current"
-                title="Visits" href="#"><i class="fa-solid fa-flask" ></i> <span>Freezers</span></a>
-                
+                title="Samples" href="#"><i class="fa-solid fa-flask" ></i> <span>Freezers</span></a>  
             </div>
             <!-- sidebar end -->
 
@@ -88,12 +86,12 @@ session_start();
             <div class="calendarContainer">
                 <br/>
                 <div class="container box">
-                    <h3 align="center"><b> SAMPLES STORAGE</b></h3>
-                    <p align="center">Sample records are managed on this page.</p>
+                <h3 align="center"><b> Samples Storage</b></h3>
+                    <p align="center"> Strictly Authorized Access only</p>
                     <br />
                     <div align="right">
-                    <button style="display:none;" type="button" name="add" id="add" class="btn btn-info disabled"><i class="fa-solid fa-plus"></i> Add visits </button>
-                    <a style="margin-left: 500px;" href="usamrukvsts.php" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true"><i class="fa-solid fa-plus"></i> <strong> Add new Visit </strong></a>
+                    <button style="display:none;" type="button" name="add" id="add" class="btn btn-info disabled"><i class="fa-solid fa-plus"></i> Add Samples </button>
+                    <a style="margin-left: 500px;" href="usamruksamples.php" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true"><i class="fa-solid fa-plus"></i> <strong> Add new sample </strong></a>
                     </div>
                     <div class="table-responsive">
                         
@@ -103,15 +101,16 @@ session_start();
                             <table id="user_data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Subject Number</th>
-                                        <th>Study Name</th>
-                                        <th>Date of Visit</th>
-                                        <th>Visit type</th>
-                                        <th>Visit Number</th>
-                                        <th>Next Date</th>
-                                        <th>Missed Visit</th>
-                                        <th>Reason</th>
-                                        <th>Action</th>
+                                    <th width="5%" style="background-color:grey; color:white;"> ID</th>   
+                                    <th width="15%" style="background-color:grey; color:white;">Subject ID</th>
+                                    <th width="auto" style="background-color:grey; color:white;">Sample Number</th>  
+                                    <th width="auto" style="background-color:grey; color:white;">Freezer Number</th>
+                                    <th width="auto" style="background-color:grey; color:white;">Boxid Storage</th> 
+                                    <th width="auto" style="background-color:grey; color:white;">Shelf</th>
+                                    <th width="auto" style="background-color:grey; color:white;">Box</th>
+                                    <th width="auto" style="background-color:grey; color:white;">Position</th> 
+                                    <th width="auto" style="background-color:grey; color:white;">Comment</th>   
+                                    <th width="5%" style="background-color:grey; color:white;">Action</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -137,7 +136,7 @@ session_start();
     "serverSide" : true,
     "order" : [],
     "ajax" : {
-     url:"pages/fetchvstslist.php",
+     url:"pages/fetchsamples.php",
      type:"POST"
     },
     dom: 'lBfrtip',
@@ -152,7 +151,7 @@ session_start();
   function update_data(id, column_name, value)
   {
    $.ajax({
-    url:"pages/updatevstslist.php",
+    url:"pages/updatesamples.php",
     method:"POST",
     data:{id:id, column_name:column_name, value:value},
     success:function(data)
@@ -190,21 +189,21 @@ session_start();
   });
   
   $(document).on('click', '#insert', function(){
-   var subject_number = $('#data1').text();
-   var study_name = $('#data2').text();
-   var visit_date = $('#data3').text();
-   var visit_type = $('#data4').text();
-   var visit_number = $('#data5').text();
-   var next_visit = $('#data6').text();
-   var missed_visit = $('#data7').text();
-   var reason = $('#data8').text();
+   var subject_id = $('#data1').text();
+   var sample_label = $('#data2').text();
+   var freezer_number = $('#data3').text();
+   var boxid_storage = $('#data4').text();
+   var shelf = $('#data5').text();
+   var box_number = $('#data6').text();
+   var position = $('#data7').text();
+   var comment = $('#data8').text();
 
-   if(subject_number != '' && study_name != '' && visit_date != '' && visit_type != '' && visit_number != '' && next_visit != '' && missed_visit != '' && reason != '' )
+   if(subject_id != '' && sample_label != '' && freezer_number != '' && boxid_storage != '' && shelf != '' && box_number != '' && position != '' && comment != '' )
    {
     $.ajax({
-     url:"pages/insertvstslist.php",
+     url:"pages/insertsamples.php",
      method:"POST",
-     data:{subject_number:subject_number,study_name:study_name,visit_date:visit_date,visit_type:visit_type,visit_number:visit_number,next_visit:next_visit,missed_visit:missed_visit,reason:reason},
+     data:{subject_id:subject_id,sample_label:sample_label,freezer_number:freezer_number,boxid_storage:boxid_storage,shelf:shelf,box_number:box_number,position:position,comment:comment},
      success:function(data)
      {
       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
@@ -227,7 +226,7 @@ session_start();
    if(confirm("Are you sure you want to delete this?"))
    {
     $.ajax({
-     url:"pages/deletevstslist.php",
+     url:"pages/deletesamples.php",
      method:"POST",
      data:{id:id},
      success:function(data){
