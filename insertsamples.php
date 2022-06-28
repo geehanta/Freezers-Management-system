@@ -14,17 +14,17 @@ if(!empty($_POST))
     $position = mysqli_real_escape_string($connect, $_POST["position"]);
     $comment = mysqli_real_escape_string($connect, $_POST["comment"]); 
     $query =  "INSERT INTO samples(subject_id, sample_label, freezer_number, boxid_storage, shelf, box_number, position, comment) 
-    VALUES('$subject_id', '$sample_label' '$freezer_number','$boxid_storage', '$shelf' '$box_number','$position', '$comment')";
+    VALUES('$subject_id', '$sample_label', '$freezer_number','$boxid_storage', '$shelf', '$box_number','$position', '$comment')";
     
     if(mysqli_query($connect, $query))
     {
-     $output .= '<label class="text-success"> Visit Data Inserted Succesfully! </label>';
+     $output .= '<label class="text-success"> Sample Data Inserted Succesfully! </label>';
      $select_query = "SELECT * FROM samples ORDER BY id DESC";
      $result = mysqli_query($connect, $select_query);
      $output .= '
       <table class="table table-bordered">  
                 <tr> 
-                    <th width="5%" style="background-color:grey; color:white;"> ID</th>   
+                <th width="5%" style="background-color:grey; color:white;"> ID</th>
                         <th width="15%" style="background-color:grey; color:white;">Subject ID</th>
                         <th width="auto" style="background-color:grey; color:white;">Sample Label</th>  
                         <th width="auto" style="background-color:grey; color:white;">Freezer Number</th>
@@ -41,7 +41,7 @@ if(!empty($_POST))
      {
       $output .= '
        <tr>  
-                        <td>' . $row["id"] . '</td>  
+                         <td>' . $row["id"] . '</td>
                          <td>' . $row["subject_id"] . '</td>  
                          <td>' . $row["sample_label"] . '</td>  
                          <td>' . $row["freezer_number"] . '</td> 

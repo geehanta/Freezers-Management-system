@@ -74,7 +74,7 @@
 
                                     if( $row["usertype"]=="admin")
                                             {  $_SESSION["USERNAME"]=$username;
-                                                header("location:sampleslist.php");
+                                                header("location:usamruksamples.php");
                                             }
                                         
                                 

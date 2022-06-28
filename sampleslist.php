@@ -100,8 +100,7 @@ session_start();
                         <div id="alert_message"></div>
                             <table id="user_data" class="table table-bordered table-striped">
                                 <thead>
-                                    <tr>
-                                    <th width="5%" style="background-color:grey; color:white;"> ID</th>   
+                                    <tr>  
                                     <th width="15%" style="background-color:grey; color:white;">Subject ID</th>
                                     <th width="auto" style="background-color:grey; color:white;">Sample Number</th>  
                                     <th width="auto" style="background-color:grey; color:white;">Freezer Number</th>
@@ -136,7 +135,7 @@ session_start();
     "serverSide" : true,
     "order" : [],
     "ajax" : {
-     url:"pages/fetchsamples.php",
+     url:"pages/fetchsampleslist.php",
      type:"POST"
     },
     dom: 'lBfrtip',
@@ -151,7 +150,7 @@ session_start();
   function update_data(id, column_name, value)
   {
    $.ajax({
-    url:"pages/updatesamples.php",
+    url:"pages/updatesampleslist.php",
     method:"POST",
     data:{id:id, column_name:column_name, value:value},
     success:function(data)
@@ -201,7 +200,7 @@ session_start();
    if(subject_id != '' && sample_label != '' && freezer_number != '' && boxid_storage != '' && shelf != '' && box_number != '' && position != '' && comment != '' )
    {
     $.ajax({
-     url:"pages/insertsamples.php",
+     url:"pages/insertsampleslist.php",
      method:"POST",
      data:{subject_id:subject_id,sample_label:sample_label,freezer_number:freezer_number,boxid_storage:boxid_storage,shelf:shelf,box_number:box_number,position:position,comment:comment},
      success:function(data)
@@ -226,7 +225,7 @@ session_start();
    if(confirm("Are you sure you want to delete this?"))
    {
     $.ajax({
-     url:"pages/deletesamples.php",
+     url:"pages/deletesampleslist.php",
      method:"POST",
      data:{id:id},
      success:function(data){

@@ -230,7 +230,7 @@ $(document).ready(function(){
   else  
   {  
    $.ajax({  
-    url:"pages/insertsamples.php",  
+    url:"insertsamples.php",  
     method:"POST",  
     data:$('#insert_form').serialize(),  
     beforeSend:function(){  
@@ -249,7 +249,7 @@ $(document).ready(function(){
   //$('#dataModal').modal();
   var sample_id = $(this).attr("id");
   $.ajax({
-   url:"pages/selectsamples.php",
+   url:"selectsamples.php",
    method:"POST",
    data:{sample_id:sample_id},
    success:function(data){
