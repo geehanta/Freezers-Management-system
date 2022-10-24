@@ -67,7 +67,7 @@ session_start();
                 <center>
                     <img src="assets/kemri-logo.png" class="profile_image" alt="">
                         <h4>
-                        <?php echo "Hello ". $_SESSION["USERNAME"];?>
+                        <?php echo "Hi". $_SESSION["USERNAME"];?>
                         </h4>
                     <br>
                 </center>

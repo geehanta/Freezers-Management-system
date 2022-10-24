@@ -52,7 +52,7 @@ $result = mysqli_query($connect, $query);
                 <i class="fa-solid fa-bars" id="sidebar_btn"></i>
                 </label>
                 <div class="left_area">
-                <h2>FREEZER <span> MANAGEMENT</span>  </h2>
+                <h2>KSM FREEZERS <span> </span>  </h2>
                 </div>
                 <div class="class">
                     <a href="logout.php" class="logout_btn">Logout</a>

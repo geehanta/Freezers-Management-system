@@ -17,7 +17,7 @@
                 <!-- header area start -->
                 <br>
                 <div class="left_area">
-                <h2 align="center"> USAMRU-K FREEZERS MANAGEMENT SYSTEM   </h2>
+                <h2 align="center"> USAMRU-K  KISUMU FREEZERS MANAGEMENT SYSTEM   </h2>
                 
                 </div>       
             </header>
